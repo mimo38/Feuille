@@ -1,6 +1,3 @@
 [submodule "gabc"]
 	path = gabc
 	url = https://github.com/mimo38/gabc
-[submodule "ly"]
-	path = ly
-	url = https://github.com/mimo38/ly
