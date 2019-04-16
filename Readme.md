@@ -1,6 +1,10 @@
-# PGX
+# Maquette
 
-Ce document est un livret liturgique.
+Ce document est une maquette de livret liturgique.
+
+cloner ce document :
+
+`git clone https://github.com/mimo38/Maquette [Nom du nouveau projet] --recurse-submodules`
 
 
 Il a été conçu à partir du projet [Lourdes](https://github.com/jperon/Lourdes)
@@ -31,18 +35,18 @@ contenu de Confirmations.tex.
 
 Commandes :
 
-* \\versiculus{LATIN}{VERNACULAIRE} et \\responsum{LATIN}{VERNACULAIRE} :
+* `\versiculus{LATIN}{VERNACULAIRE}` et `\responsum{LATIN}{VERNACULAIRE}` :
     pour saisir versets et répons, sans se soucier des ℣. et ℟.
-* \\oratio{LATIN}{VERNACULAIRE} : pour saisir une oraison, sans s'occuper du
+* `\oratio{LATIN}{VERNACULAIRE}` : pour saisir une oraison, sans s'occuper du
     *Dóminus vobíscum* et du *Amen*
 
 Environnements :
 * *priere* : pour saisir une prière en vernaculaire ;
 * *litaniae* : pour les litanies. Au sein de cet environnement, les invocations
-    doivent être saisies au sein d'une commande \\invocatio{LATIN}{VERNACULAIRE}
+    doivent être saisies au sein d'une commande `\invocatio{LATIN}{VERNACULAIRE}`
 	ou d'une commande
-	\\rinvocatio{LATIN}{VERNACULAIRE}{REPONSELATIN}{REPONSEVERNACULAIRE}
-
+	`\rinvocatio{LATIN}{VERNACULAIRE}{REPONSELATIN}{REPONSEVERNACULAIRE}`
+	
 ### Musique
 
 * \\cantus{DOSSIER}{PARTITION}{TYPE}{MODE} : pour insérer des partitions gabc

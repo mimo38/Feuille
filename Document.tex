@@ -1,0 +1,81 @@
+% Afficher des recommendations concernant la syntaxe.
+\RequirePackage[orthodox,l2tabu]{nag}
+\RequirePackage{luatex85}
+% Paramètres du document.
+\documentclass[%
+a5paper%                       Taille de page.
+,11pt%                         Taille de police.
+,DIV=15%                       Plus grand => des marges plus petites.
+,titlepage=off%                 Faut-il une page de titre ?
+%,headings=optiontoheadandtoc%  Effet des paramètres optionnels de section.
+%,headings=small%
+,parskip=false%
+,openany%
+]{scrbook}
+\renewcommand*\partheademptypage{\thispagestyle{empty}}
+\newcounter{facteur}\setcounter{facteur}{17}%%%%%%%%%%%%%% Paramètre pour la taille globale des partitions. par défaut : 17
+%\usepackage{geometry}
+\usepackage{gredoc,mudoc,lyluatex}
+\usepackage{pdfpages,transparent,array,ltablex}
+\usepackage{framed}
+
+%%%%%%%%%%%%%%%%%%%%%%% Paramètres variables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Taille des partitions grégoriennes.                                                      %%
+%\grechangedim{overhepisemalowshift}{.7mm}{scalable} %%Distance to place a a horizontal episema over a note in a low position in the space.Default: 0.02287 cm
+%\grechangedim{hepisemamiddleshift}{1.4mm}{scalable} %%Distance to place a horizontal episema in the middle of a space. Default: 0.07206 cm
+%\grechangedim{overhepisemahighshift}{2.1mm}{scalable} %% Distance to place a horizontal episema over a note in a high position in the space. Default: 0.10066 cm
+%\grechangedim{vepisemahighshift}{2.1mm}{scalable} %% Distance to place a vertical episema in a high position in the space. Default: 0.06634 cm
+%\grechangestafflinethickness{50} %%% epaisseur des lignes The default value is same as staff size.
+\grechangestaffsize{\value{facteur}}%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Par souci de clarté, la définition des commandes est reportée dans un document annexe.
+
+%\addtolength{\voffset}{2mm}\addtolength{\headsep}{-2mm}
+%\setlength{\extrarowheight}{2mm}
+\addto\captionsfrench{%
+  \renewcommand{\indexname}{Index des chants}%
+}
+
+\pdfcompresslevel=9
+
+\def\arraystretch{1.2}
+
+%%%%%%% Commandes ajoutées assez explicites %%%%%%%%%%%%%%%%
+\newcommand{\reponsegras}[2]{
+    \versio{\textbf{#1}}{{#2}}
+}
+\newcommand{\imagecentre}[2]{
+\begin{center} \includegraphics[height=#1]{img/#2} \end{center}}
+
+%%%%%%%%%%% Pour la page de titre %%%%%%%%%%%%%
+\title{}
+\author{}
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\newfontfamily\malettrine[Scale=0.8]{l800}
+\renewcommand{\LettrineFontHook}{\malettrine\color{black}}
+\maketitle
+\newpage
+%\vspace*{\stretch{9}}
+\thispagestyle{empty}
+
+%\vspace*{\stretch{1}}
+%\newpage
+
+\subsection{Introït}
+\vulgo{Réjouissons-nous ensemble dans le Seigneur, car la fête que nous célébrons aujourd'hui est celle du bienheureux pontife Front. Cette solennité réjouit les Anges et tous en chœur louent le Fils de Dieu. {\rubrum \textit {Ps.}} Justes, exultez dans le Seigneur : aux cœurs droits convient sa louange. Gloire au Père.}
+\cantus{Introit}{Gaudeamus_Frontone}{Intr.}{1.}
+
+\subsection{Collecte}
+\versio{\lettrine{D}{eus}, qui beátum Frontónem, ab Apostolórum Príncipe Epíscopum ordinátum, ad salútem gentis nostrræ míttere dignátus es : fac nos, qu\'æsumus, ita eum venerári in terris, ut regnáre cum ipso mereámur in cœlis. Per Dóminum.}
+{\lettrine{D}{ieu} qui avez daigné envoyer saint Front, élevé à l'épiscopat par le prince des Apôtres, pour le salut de notre peuple, faites, nous vous en prions, que nous le vénérions ici bas de telle sorte que nous méritions de régner avec lui dans le Ciel. Par Jésus-Christ.}
+
+\subsection{Épître}
+
+\rubrica{I Thes. II, 2-8}
+
+\end{document}
