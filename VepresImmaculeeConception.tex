@@ -1,4 +1,4 @@
-Ant% Afficher des recommandations concernant la syntaxe.
+% Afficher des recommandations concernant la syntaxe.
 \RequirePackage[orthodox,l2tabu]{nag}
 \RequirePackage{luatex85}
 % Paramètres du document.
@@ -74,6 +74,7 @@ a5paper%                       Taille de page.
 \cantus{Verset}{DeusInAdiutorium_solemnis}{}{}
 \medskip
 
+\vulgo{Vous êtes toute belle, ô Marie, et la tache originelle n’est pas en vous.}
 \cantus{Antienne}{TotaPulchraEs}{1.Ant}{1.g.2}
 \rubrica{\textit{Ps. 109}}
 \psalmus[numerus=1]{109-1g2}
@@ -82,6 +83,7 @@ a5paper%                       Taille de page.
 
 \medskip
 
+\vulgo{Votre vêtement est blanc comme la neige, et votre visage comme le soleil.}
 \cantus{Antienne}{VestimentumTuum}{2.Ant}{8.G}
 \rubrica{\textit{Ps. 112}}
 \psalmus[numerus=1]{112-8G}
@@ -90,6 +92,7 @@ a5paper%                       Taille de page.
 
 \medskip
 
+\vulgo{Vous êtes la gloire de Jérusalem, vous êtes la joie d’Israël, vous êtes l’honneur de notre peuple.}
 \cantus{Antienne}{TuGloria}{3.Ant}{8.c}
 \rubrica{\textit{Ps. 121}}
 \psalmus[numerus=1]{121-8c}
@@ -97,7 +100,7 @@ a5paper%                       Taille de page.
 \cantus{Antienne}{TuGloria}{3.Ant}{8.c}
 
 \medskip
-
+\vulgo{Vous êtes bénie, ô Vierge Marie, par le Seigneur, le Dieu très haut, plus que toutes les femmes, sur la terre.}
 \cantus{Antienne}{BenedictaEsTu}{4.Ant}{7.a}
 \rubrica{\textit{Ps. 126}}
 \psalmus[numerus=1]{126-7a}
@@ -105,7 +108,7 @@ a5paper%                       Taille de page.
 \cantus{Antienne}{BenedictaEsTu}{4.Ant}{7.a}
 
 \medskip
-
+\vulgo{Entraînez-nous, Vierge immaculée, nous courrons à votre suite, à l’odeur de vos parfums.}
 \cantus{Antienne}{TraheNos}{5.Ant}{3.a2}
 \rubrica{\textit{Ps. 147}}
 \psalmus[numerus=1]{147-3a2}
@@ -137,12 +140,23 @@ a5paper%                       Taille de page.
 \ligne{2}{10}
 
 \rubrica{aux deuxièmes vêpres :}
+\vulgo{Aujourd’hui est sorti un rejeton de la tige de Jessé ; aujourd’hui Marie a été conçue sans aucune tache de péché ; aujourd’hui a été écrasée, par elle, la tête de l’antique serpent, alléluia.}
 \cantus{Antienne}{HodieEgressaEst}{Ant.}{1f}
 \ligne{2}{10}
 \canticum[tonus=1f,primus=1,numerus=1]{Magnificat}
 \gloria[tonus=1f]
 
 \subsection{Oraison}
+
+\oratio{%
+Deus, qui per immaculátam Vírginis Conceptiónem dignum Fílio tuo habitáculum præparásti: quǽsumus; ut qui ex morte eiúsdem Fílii tui prævísa, eam ab omni labe præservásti, nos quoque mundos eius intercessióne ad te perveníre concédas.
+Per eúndem Dóminum}{%
+Ô Dieu, qui, par l’immaculée Conception de la Vierge, avez préparé à votre Fils une demeure digne de lui, et qui, en prévision de la mort de ce même Fils, avez préservé celle-ci de toute souillure, accordez-nous, nous vous le demandons, d’arriver jusqu’à vous, purs nous aussi, par son intercession.
+Par le même Jésus Christ%
+}
+
+\subsection*{Conclusion}
+
 \versio{%
 ℣. Dóminus vobíscum.%
 }{%
@@ -155,11 +169,12 @@ a5paper%                       Taille de page.
 ℟. Et avec votre esprit.%
 }
 
-\oratio{%
-Deus, qui per immaculátam Vírginis Conceptiónem dignum Fílio tuo habitáculum præparásti: quǽsumus; ut qui ex morte eiúsdem Fílii tui prævísa, eam ab omni labe præservásti, nos quoque mundos eius intercessióne ad te perveníre concédas.
-Per eúndem Dóminum}{%
-Ô Dieu, qui, par l’immaculée Conception de la Vierge, avez préparé à votre Fils une demeure digne de lui, et qui, en prévision de la mort de ce même Fils, avez préservé celle-ci de toute souillure, accordez-nous, nous vous le demandons, d’arriver jusqu’à vous, purs nous aussi, par son intercession.
-Par le même Jésus Christ%
-}
+\medskip
+\rubrica{aux premières vêpres :}
+\cantus{Verset}{BenedicamusDominoIVesp}{}{}
+\rubrica{aux deuxièmes vêpres :}
 
+\cantus{Verset}{BenedicamusDomino-IIVepres-IClasse-AdLib}{}{}
+\versio{Fidélium ánimæ per misericórdiam Dei requiéscant in pace.}{Que par la miséricorde de Dieu, les âmes des fidèles trépassés reposent en paix.}
+\reponsegras{℟. Amen.}{℟. Ainsi soit-il.}
 \end{document}
