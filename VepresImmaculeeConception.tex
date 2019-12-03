@@ -5,14 +5,14 @@
 \documentclass[%
 a5paper%                       Taille de page.
 ,11pt%                         Taille de police.
-,DIV=15%                       Plus grand => des marges plus petites.
+,DIV=16%                       Plus grand => des marges plus petites.
 ,titlepage=off%                 Faut-il une page de titre ?
 %,headings=optiontoheadandtoc%  Effet des paramètres optionnels de section.
 %,headings=small%
 ,parskip=false%
 ,openany%
 ]{scrbook}
-\renewcommand*\partheademptypage{\thispagestyle{empty}}
+%\renewcommand*\partheademptypage{\thispagestyle{empty}}
 \newcounter{facteur}\setcounter{facteur}{17}%%%%%%%%%%%%%% Paramètre pour la taille globale des partitions. par défaut : 17
 %\usepackage{geometry}
 \usepackage{gredoc,mudoc,lyluatex}
@@ -26,7 +26,7 @@ a5paper%                       Taille de page.
 %\grechangedim{overhepisemahighshift}{2.1mm}{scalable} %% Distance to place a horizontal episema over a note in a high position in the space. Default: 0.10066 cm
 %\grechangedim{vepisemahighshift}{2.1mm}{scalable} %% Distance to place a vertical episema in a high position in the space. Default: 0.06634 cm
 %\grechangestafflinethickness{50} %%% epaisseur des lignes The default value is same as staff size.
-\grechangestaffsize{\value{facteur}}%%%%% 
+\grechangestaffsize{\value{facteur}}%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Par souci de clarté, la définition des commandes est reportée dans un document annexe.
 
@@ -58,20 +58,19 @@ a5paper%                       Taille de page.
 \begin{document}
     \newfontfamily\malettrine[Scale=0.8]{l800}
     \renewcommand{\LettrineFontHook}{\malettrine\color{black}}
-    
+
     \newcommand{\ligne}[2]{
     \begin{center}
     \greseparator{#1}{#2}
     \end{center}
-}%\maketitle
+}%
+\maketitle
 %\newpage
 %\vspace*{\stretch{9}}
 %\thispagestyle{empty}
-\pagestyle{empty}
 %\vspace*{\stretch{1}}
 %\newpage
 \section {Vêpres de l'Immaculée Conception}
-\subsection{Alma}
 
 \cantus{Verset}{DeusInAdiutorium_solemnis}{}{℣.}
 \medskip
