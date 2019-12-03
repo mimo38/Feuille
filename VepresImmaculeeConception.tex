@@ -56,23 +56,22 @@ a5paper%                       Taille de page.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-    \newfontfamily\malettrine[Scale=0.8]{l800}
-    \renewcommand{\LettrineFontHook}{\malettrine\color{black}}
+                \newfontfamily\malettrine[Scale=0.8]{l800}
+                \renewcommand{\LettrineFontHook}{\malettrine\color{black}}
 
-    \newcommand{\ligne}[2]{
-    \begin{center}
-    \greseparator{#1}{#2}
-    \end{center}
-}%
+                \newcommand{\ligne}[2]{
+                \begin{center}
+                \greseparator{#1}{#2}
+                \end{center}
+                }%
 \maketitle
 %\newpage
 %\vspace*{\stretch{9}}
 %\thispagestyle{empty}
 %\vspace*{\stretch{1}}
 %\newpage
-\section {Vêpres de l'Immaculée Conception}
 
-\cantus{Verset}{DeusInAdiutorium_solemnis}{}{℣.}
+\cantus{Verset}{DeusInAdiutorium_solemnis}{}{}
 \medskip
 
 \cantus{Antienne}{TotaPulchraEs}{1.ANT.}{1.g.2}
@@ -116,11 +115,24 @@ a5paper%                       Taille de page.
 ℟. Rendons grâces à Dieu.%
 }
 
-\cantus{Hymne}{AveMarisStella}{Hymn.}{1}
-\version{\V. Immaculáta Conceptio est hódie sanctæ Maríæ Vírginis.}{\V. C’est aujourd’hui l’immaculée Conception de la sainte Vierge Marie.}
+%\cantus{Hymne}{AveMarisStella}{Hymn.}{1}
+\input{gabc/Hymne/AveMarisStellaComplet.tex}
+\versio{℣. Immaculáta Conceptio est hódie sanctæ Maríæ Vírginis.}{℣. C’est aujourd’hui l’immaculée Conception de la sainte Vierge Marie.}
 \reponsegras{℟. Quæ serpéntis caput virgíneo pede contrívit.}{℟. Qui a écrasé la tête du serpent de son pied virginal.}
 
+\ligne{2}{10}
+\subsection{aux premières vêpres}
 \cantus{Antienne}{BeatamMeDicent}{Ant.}{8}
+\canticum[tonus=8,primus=1,numerus=1]{Magnificat}
+\gloria[tonus=8]
+
+\ligne{2}{10}
+
+\subsection{aux deuxièmes vêpres}
 \cantus{Antienne}{HodieEgressaEst}{Ant.}{1}
+\psalmus[numerus=1]{147-3a2}
+\canticum[tonus=1,primus=1,numerus=1]{Magnificat}
+\gloria[tonus=1]
+
 
 \end{document}
