@@ -1,0 +1,79 @@
+% Afficher des recommendations concernant la syntaxe.
+\RequirePackage[orthodox,l2tabu]{nag}
+\RequirePackage{luatex85}
+% Paramètres du document.
+\documentclass[%
+a5paper%                       Taille de page.
+,11pt%                         Taille de police.
+,DIV=15%                       Plus grand => des marges plus petites.
+,titlepage=off%                 Faut-il une page de titre ?
+%,headings=optiontoheadandtoc%  Effet des paramètres optionnels de section.
+%,headings=small%
+,parskip=false%
+,openany%
+]{scrbook}
+\renewcommand*\partheademptypage{\thispagestyle{empty}}
+\newcounter{facteur}\setcounter{facteur}{17}%%%%%%%%%%%%%% Paramètre pour la taille globale des partitions. par défaut : 17
+%\usepackage{geometry}
+\usepackage{gredoc,mudoc,lyluatex}
+\usepackage{pdfpages,transparent,array,ltablex}
+\usepackage{framed}
+
+%%%%%%%%%%%%%%%%%%%%%%% Paramètres variables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Taille des partitions grégoriennes.                                                      %%
+%\grechangedim{overhepisemalowshift}{.7mm}{scalable} %%Distance to place a a horizontal episema over a note in a low position in the space.Default: 0.02287 cm
+%\grechangedim{hepisemamiddleshift}{1.4mm}{scalable} %%Distance to place a horizontal episema in the middle of a space. Default: 0.07206 cm
+%\grechangedim{overhepisemahighshift}{2.1mm}{scalable} %% Distance to place a horizontal episema over a note in a high position in the space. Default: 0.10066 cm
+%\grechangedim{vepisemahighshift}{2.1mm}{scalable} %% Distance to place a vertical episema in a high position in the space. Default: 0.06634 cm
+%\grechangestafflinethickness{50} %%% epaisseur des lignes The default value is same as staff size.
+\grechangestaffsize{\value{facteur}}%%%%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Par souci de clarté, la définition des commandes est reportée dans un document annexe.
+
+%\addtolength{\voffset}{2mm}\addtolength{\headsep}{-2mm}
+%\setlength{\extrarowheight}{2mm}
+\addto\captionsfrench{%
+  \renewcommand{\indexname}{Index des chants}%
+}
+
+\pdfcompresslevel=9
+
+\def\arraystretch{1.2}
+
+%%%%%%% Commandes ajoutées assez explicites %%%%%%%%%%%%%%%%
+\newcommand{\reponsegras}[2]{
+    \versio{\textbf{#1}}{{#2}}
+}
+\newcommand{\imagecentre}[2]{
+\begin{center} \includegraphics[height=#1]{img/#2} \end{center}}
+
+%%%%%%%%%%% Pour la page de titre %%%%%%%%%%%%%
+\title{}
+\author{}
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\newfontfamily\malettrine[Scale=0.8]{l800}
+\renewcommand{\LettrineFontHook}{\malettrine\color{black}}
+%\maketitle
+%\newpage
+%\vspace*{\stretch{9}}
+\thispagestyle{empty}
+
+\titre{Jeanne en chantant}
+\lilypondfile[staffsize=15]{ly/JeanneEnChantant/JeanneEnChantant.ly}
+\chanson[premiercouplet=2,position=2col,numero=2]{ly/JeanneEnChantant/JeanneEnChantant}
+
+\newpage
+\titre{Bénis tes Chevaliers}
+\lilypondfile[staffsize=15]{ly/BenisTesChevaliers/BenisTesChevaliers.ly}
+\chanson[premiercouplet=2,position=2col,numero=2]{ly/BenisTesChevaliers/BenisTesChevaliers}
+
+\newpage
+\titre{Jeanne de France}
+
+
+\end{document}
