@@ -3,9 +3,21 @@
 Ce document est une maquette de livret liturgique.
 
 cloner ce document :
+Les modifications sont apportées dans les dépendances (submodule), puis répercutés dans le dépôt par la commande:
+
+ `git submodule update --remote`
+
+Mettre à jour :
+
+`git push --recurse-submodules=check`
+
+Cloner un projet:
 
 `git clone https://github.com/mimo38/Maquette [Nom du nouveau projet] --recurse-submodules`
 
+Ajouter un "submodule":
+
+`git submodule add https://github.com/[NOM_DU_DEPOT_QUI_SERA_MODULE]`
 
 Il a été conçu à partir du projet [Lourdes](https://github.com/jperon/Lourdes)
 
@@ -23,7 +35,7 @@ Outre les commandes fournies par les *KOMA-scripts* et par *GregorioTeX*,
 sur lesquels il est basé, le gabarit utilisé définit les commandes décrites
 brièvement ci-après. Un petit dessin valant mieux qu'un long discours, le
 meilleur moyen de comprendre leur fonctionnement est de se reporter au
-contenu de Confirmations.tex. 
+contenu de Confirmations.tex.
 
 ### Rubriques
 
@@ -46,7 +58,7 @@ Environnements :
     doivent être saisies au sein d'une commande `\invocatio{LATIN}{VERNACULAIRE}`
 	ou d'une commande
 	`\rinvocatio{LATIN}{VERNACULAIRE}{REPONSELATIN}{REPONSEVERNACULAIRE}`
-	
+
 ### Musique
 
 * \\cantus{DOSSIER}{PARTITION}{TYPE}{MODE} : pour insérer des partitions gabc
