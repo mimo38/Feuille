@@ -236,11 +236,11 @@
 	\ensurevspace{#1\baselineskip}
 	\switchcolumn\switchcolumn*
  	%\begin{latin}
- 	#2\looseness=-1 
+ 	#2\looseness=-1
  	%\end{latin}
 	\switchcolumn
 	%\begin{french}
-	#3\looseness=-1 
+	#3\looseness=-1
 	%\end{french}
 	\end{paracol}%
 	}%
@@ -728,43 +728,44 @@
 %%%Ajout pour appeler un psaume et sa traduction en 2 col avec numéro
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% AJOUT %%%%%%%%%%%%%%%%
 %Pour saisir un verset de Psaume et sa traduction
-\newcounter{monnumerus}
-\setcounter{monnumerus}{2}
-\newcounter{monversus}
-\newcounter{monultimus}
+\newcounter{numerustr}
+\setcounter{numerustr}{1}
+\newcounter{ultimustr}
+\newkeycommand\psalmustr[tonus,ultimustr=0,numerustr=\value{numerustr}][2]{
 
-\newcommand{\versusversio}[2]{%
-\stepcounter{monversus}
+% changer la commande versus pour trouver le nombre de verset
+\renewcommand{\versus}[1]{%
+\stepcounter{versus}
 \ifthenelse{%
-	\(\commandkey{monprimus} = \value{monversus}%
-	\OR \commandkey{monprimus} < \value{monversus}\)%
-	\AND \(\value{monultimus} > \value{monversus}%
-	\OR \commandkey{monultimus} = 0\)
-}{\nopagebreak%
-\versio{\noindent\arabic{monnumerus}.\hspace{1ex}#1%\par
-}{\noindent\arabic{monnumerus}.\hspace{1ex}#2%\par
-} \stepcounter{monnumerus}%
-}\nopagebreak %\par
+	\(\commandkey{primus} = \value{versus}%
+	\OR \commandkey{primus} < \value{versus}\)%
+	\AND \(\value{ultimus} > \value{versus}%
+	\OR \commandkey{ultimus} = 0\)
+}{%
+	\setcounter{ultimustr}{\value{versus}}%
+}
 }
 
-%Pour appeler un Psaume, un Cantique, le Gloria et sa traduction
-\newkeycommand\psalmusversio[tonus,monprimus=1,monultimus=0,monnumerus=\value{monnumerus}][1]{%
-	\setcounter{monversus}{0}%
-	\setcounter{monnumerus}{\commandkey{monnumerus}}%
-	\setcounter{monultimus}{\commandkey{monultimus} + 1}%
-	\input{gabc/Psaume/Ps-#1}%
+%appeler le ps latin pour trouver le nb de verset
+\psalmus[tonus=1,primus=\value{primustr},ultimus=0]{#1.tex}
+
+%% redéfinir la commande versus à l'originelle
+\renewcommand{\versus}[1]{%
+\stepcounter{versus}
+\ifthenelse{%
+	\(\commandkey{primus} = \value{versus}%
+	\OR \commandkey{primus} < \value{versus}\)%
+	\AND \(\value{ultimus} > \value{versus}%
+	\OR \commandkey{ultimus} = 0\)
+}{%
+	\noindent\arabic{numerus}.\hspace{1ex}#1\par\stepcounter{numerus}%
+}\par
 }
 
-\newkeycommand{\mongloria}[tonus]{%
-	\setcounter{monversus}{\value{monultimus} - 1}
-	\input{gabc/Psaume/Gloria-t}}
-
-\newcommand{\versusversiogloria}[2]{%
-	\stepcounter{monversus}
-	\versio{	
-\noindent\arabic{monnumerus}.\hspace{1ex}#1\par}{
-\noindent\arabic{monnumerus}.\hspace{1ex}#2\par}
-
-\stepcounter{monnumerus}%
+% appeler en boucle et 1 par 1 les versets avec leur traduction en face jusqu'à "ultimus"
+\whiledo{\not{\value{numerustr}>\ultimustr}
+{%
+\versio%
+{\psalmus[tonus=\commandkey{tonus},primus=\value{numerustr},ultimus=\value{numerustr},numerus=\value{numerustr}]{#1.tex}}
+{\psalmus[tonus=\commandkey{tonus},primus=\value{numerustr},ultimus=\value{numerustr},numerus=\value{numerustr}]{#2.tex}}
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIN AJOUT %%%%%%%%%%%%%%%%
