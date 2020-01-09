@@ -76,7 +76,51 @@ a5paper%                       Taille de page.
 
 \vulgo{Vous êtes toute belle, ô Marie, et la tache originelle n’est pas en vous.}
 \cantus{Antienne}{TotaPulchraEs}{1.Ant}{1.g.2}
-\rubrica{\textit{Ps. 109}}
+\ps{109}
+%
+%%%%%%%% à partir d'ici, on bricole pour les ps traduits
+\renewcommand{\versus}[1]{%
+\stepcounter{versus}
+}
+\psalmus[numerus=1]{109-1g2}
+\theversus
+
+
+\newcounter{MyCounter}
+\def\StartValue{1}
+\def\MaxValue{\value{versus}}
+
+\renewcommand{\versus}[1]{%
+\stepcounter{versus}
+\ifthenelse{%
+	\(\commandkey{primus} = \value{versus}%
+	\OR \commandkey{primus} < \value{versus}\)%
+	\AND \(\value{ultimus} > \value{versus}%
+	\OR \commandkey{ultimus} = 0\)
+}{%
+	\noindent\arabic{numerus}.\hspace{1ex}#1\par\stepcounter{numerus}%
+}\par
+}
+
+\setcounter{MyCounter}{\StartValue}
+
+\whiledo{\not{\value{MyCounter}>\MaxValue}}{%
+\versio{  \psalmus[numerus=\theMyCounter,primus=\theMyCounter,ultimus=\theMyCounter]{109-1g2}}{
+\psalmus[numerus=\theMyCounter,primus=\theMyCounter,ultimus=\theMyCounter]{109-fr}
+}
+    \stepcounter{MyCounter}
+}
+%
+%%% pour gloria patri avec les bons numéros
+\def\MaxValue{\MaxValue + 2}
+\whiledo{\not{\value{MyCounter}>\MaxValue}}{%
+\versio{
+\psalmus[numerus=\theMyCounter,primus=\theMyCounter,ultimus=\theMyCounter]{GloriaPatri}}{
+\psalmus[numerus=\theMyCounter,primus=\theMyCounter,ultimus=\theMyCounter]{GloriaPatri-fr}
+}
+\stepcounter{MyCounter}
+}
+
 \psalmus[numerus=1]{109-1g2}
 \gloria[tonus=1g2]
 \cantus{Antienne}{TotaPulchraEs}{1.Ant}{1.g.2}
