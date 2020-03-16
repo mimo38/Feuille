@@ -1,0 +1,196 @@
+% Afficher des recommandations concernant la syntaxe.
+\RequirePackage[orthodox,l2tabu]{nag}
+\RequirePackage{luatex85}
+% Paramètres du document.
+\documentclass[%
+a5paper%                       Taille de page.
+,11pt%                         Taille de police.
+,DIV=16%                       Plus grand => des marges plus petites.
+,titlepage=off%                 Faut-il une page de titre ?
+%,headings=optiontoheadandtoc%  Effet des paramètres optionnels de section.
+%,headings=small%
+,parskip=false%
+,openany%
+]{scrbook}
+%\renewcommand*\partheademptypage{\thispagestyle{empty}}
+\newcounter{facteur}\setcounter{facteur}{17}%%%%%%%%%%%%%% Paramètre pour la taille globale des partitions. par défaut : 17
+%\usepackage{geometry}
+\usepackage{gredoc,mudoc,lyluatex}
+\usepackage{pdfpages,transparent,array,ltablex}
+\usepackage{framed}
+
+%%%%%%%%%%%%%%%%%%%%%%% Paramètres variables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Taille des partitions grégoriennes.                                                      %%
+%\grechangedim{overhepisemalowshift}{.7mm}{scalable} %%Distance to place a a horizontal episema over a note in a low position in the space.Default: 0.02287 cm
+%\grechangedim{hepisemamiddleshift}{1.4mm}{scalable} %%Distance to place a horizontal episema in the middle of a space. Default: 0.07206 cm
+%\grechangedim{overhepisemahighshift}{2.1mm}{scalable} %% Distance to place a horizontal episema over a note in a high position in the space. Default: 0.10066 cm
+%\grechangedim{vepisemahighshift}{2.1mm}{scalable} %% Distance to place a vertical episema in a high position in the space. Default: 0.06634 cm
+%\grechangestafflinethickness{50} %%% epaisseur des lignes The default value is same as staff size.
+\grechangestaffsize{\value{facteur}}%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Par souci de clarté, la définition des commandes est reportée dans un document annexe.
+
+%\addtolength{\voffset}{2mm}\addtolength{\headsep}{-2mm}
+%\setlength{\extrarowheight}{2mm}
+\addto\captionsfrench{%
+  \renewcommand{\indexname}{Index des chants}%
+}
+
+\pdfcompresslevel=9
+
+\def\arraystretch{1.2}
+
+%%%%%%% Commandes ajoutées assez explicites %%%%%%%%%%%%%%%%
+\newcommand{\reponsegras}[2]{
+    \versio{\textbf{#1}}{{#2}}
+}
+\newcommand{\imagecentre}[2]{
+\begin{center} \includegraphics[height=#1]{img/#2} \end{center}}
+
+%%%%%%%%%%% Pour la page de titre %%%%%%%%%%%%%
+\title{Ritus benedicendi et imponendi primarum lapidem}
+\author{pro ecclesia ædificanda}
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+                \newfontfamily\malettrine[Scale=0.8]{l800}
+                \renewcommand{\LettrineFontHook}{\malettrine\color{black}}
+
+                \newcommand{\ligne}[2]{
+                \begin{center}
+                \greseparator{#1}{#2}
+                \end{center}
+                }%
+\maketitle
+%\newpage
+%\vspace*{\stretch{9}}
+%\thispagestyle{empty}
+%\vspace*{\stretch{1}}
+\newpage
+1. \rubrica{Aucune église ne sera édifiée sans le consentement exprès de l'Ordinaire du lieu, donné par écrit, ou du Vicaire Général, par mandat spécial}
+%{Nulla ecclesia ædificetur sine expresso Ordinarii loci consensu scriptis dato, quem tamen Vicarius Generalis præstare nequit sine mandato speciali.}
+\rubrica{Le prêtre qui a reçu le pouvoir de l'Ordinaire de bénir la première pierre , il suit ce rite}
+%Si Sacerdos, eius ædificationis primarium, lapidem benedicendi potestatem habens ab Ordinario, eiusmodi functionem peragat, hunc ritum servabit.}
+
+2. \rubrica{La veille de la bénédiction de la première pierre, une croix de bois sera placée à l'endroit où sera l'autel par le prêtre, ou un autre. Le jour suivant, en posant la pierre de fondation, qui doit être carrée et angulaire, on la bénira suivant ce qui suit.}
+%Pridie quam primarius lapis benedicatur, ligneam Crucem in loco ubi debet esse Altare, figat ipse, vel alius Sacerdos. Sequenti vero die lapis in ecclesisæ fundatione ponendus qui debet esse quadratus, et angularis, benedicatur hoc modo.}
+
+3. \rubrica{Le prêtre, revêtu de l'amict, de l'aube, du cordon, de l'étole et de la chape de couleur blanche, accompagné de quelque clerc, bénit le sel et l'eau, à moins d'avoir déjà de l'eau bénite selon la formule ordinaire ; alors, pendant le chant de l'Atienne et du psaume, il asperge l'endroit où la croix est installée}
+%Sacerdos indutus amictu, alba, cingulo, stola et pluviæ albi coloris, adhibitis aliquot Clericis, sal et aquam benedicit, nisi prius in promptu habeat aquam iam benedictam, ordinaria benedictione, et interim, dum cantatur a Clericis Antiphona cum Psalmo sequenti, aspergit locum, ubi Crux posita est, aqua benedicta.}
+\vulgo{ Posez, Seigneur en ce lieu la marque du salut, et ne permettez pas qu'y rentre l'ange de malheur}
+\cantus{Antienne}{SignumSalutis}{Ant.}{8.}
+\ps{83}
+\cantus{Psaume-intonation}{83-8G}{Ps.}{8G}
+\psalmus[primus=2,numerus=2]{83-8G}
+\gloria[tonus=8G]
+\medskip
+4. \rubrica{Finite Psalmo, Sacerdos versus ad locum a se aspersum}
+
+\versio{Orémus.}{Prions}
+
+\versio{Dómine Deus, qui licet cælo et terra non capiáris, domum tamen dignáris habére in terris, ubi nomen tuum iúgiter invocétur: locum hunc, quaésumus, beátæ Maríæ semper Vírginis, et beáti {\rubrum N. (nominando Sanctum vel Sanctam, in cuius honorem ac nomen fundabitur ecclesia)}, omniúmque Sanctórum intercedéntibus méritis, seréno pietátis tuæ intúitu visita, et per infusiónem grátiæ tuæ ab omni inquinaménto purífica, purificatúmque consérva; et qui dilécti tui David devotiónem in fílii sui Salomónis opere complevísti, in hoc ópere desidéria nostra perfícere dignéris, effugiántque
+omnes hinc nequítiæ spirituáles. Per Dóminum.}
+{Seigneur Dieu, que le ciel et la terre ne peuvent contenir, mais qui avez daigné habiter sur la terre, où votre nom est invoqué avec raison : par les mérites de la bienheureuse Vierge Marie et de saint {\rubrum N. (en nommant le Saint ou la Sainte en l'honneur duquel l'église est fondée)} et par les mérites de tous les saints, visitez ce lieu en y répendant votre sereine piété, et par l'infusion de votre grâce, purifiez-nous de toute souillure, et gardez-nous purs ; et vous qui avez achevé la dévotion de votre bien-aimé David par les œuvres de sons fils Salomon, daignez parachever notre œuvre, en écartant d'ici tous les esprit mauvais. Par le Christ. }
+\responsum{Amen.}{Ainsi-soit-il}
+%\textbf{℟. Amen.}
+
+\medskip
+5. \rubrica{Postea stans benedicit primarium lapidem, dicens:}
+
+℣. \versiculus{Adiutórium nostrum in nómine Dómini.}{Notre secours est dans le nom de Dieu}
+
+\textbf{℟. Qui fecit cælum et terram.}
+
+℣. Sit nomen Dómini benedíctum.
+
+\textbf{℟. Ex hoc nunc et usque in saéculum.}
+
+℣. Lápidem, quem reprobavérunt ædificántes.
+
+\textbf{℟. Hic factus est in caput ánguli.}
+
+℣. Tu es Petrus.
+
+\textbf{℟. Et super hanc petram ædificábo Ecclésiam meam.}
+
+℣. Glória Patri, et Fílio, et Spirítui Sancto.
+
+\textbf{℟. Sicut erat in princípio, et nunc, et semper, et in sǽcula sæculórum. Amen.}
+
+Orémus.
+
+Oratio Dómine Jesu Christe, Fíli Dei vivi, qui es verus omnípotens Deus, splendor, et imágo ætérni Patris, et vita ætérna: qui es lapis anguláris de monte sine mánibus abscíssus, et immutábile fundaméntum: hunc lápidem collocándum in tuo nómine confírma; et tu, qui es princípium et finis, in quo princípio Deus Pater ab inítio cuncta creávit, sis, quaésumus, princípium, et increméntum, et consummátio ipsíus óperis, quod debet ad laudem et glóriam tui nóminis inchoári: Qui cum Patre et Spíritu Sancto vivis et regnas Deus, per ómnia sǽcula sæculórum
+\textbf{\rb. Amen}
+
+\medskip
+6. \rubrica{Tunc aspereit lapidem ipsum aqua benedicta, et, accepto cultro, per singulas partes sculpit in eo signum crucis, dicens:}
+In nómine Pa\crux tris, et Fí\crux lii, et Spíritus \crux~Sancti. \textbf{\rb. Amen}
+
+\rubrica{Quo facto dicit:}
+Orémus.
+
+Béne\crux dic, Dómine, creatúram istam lápidis, et præsta per invocatiónem sancti tui nóminis: ut,
+quicúmque ad hanc ecclésiam ædificándam pura mente auxílium déderint, córporis sanitátem, et
+ánimæ medélam percípiant. Per Christum Dóminum nostrum. \textbf{\rb. Amen}
+
+\medskip
+7. \rubrica{Postea dicantur Litaniæ ordinariæ sine Orationibus in fine positis}
+
+\input{gabc/Litanies/litanies.tex}
+
+\rubrica{Quibus dictis, parato
+cæmento, et Cæmentario assistente, Sacerdos inchoat, Clericis prosequentibus, Antiphonam:}
+\vulgo{Jacob, se levant le matin, érigea la pierre comme un monument, répandant de l’huile dessus il la voua au Seigneur : vraiment ce lieu est saint, et je ne le savais pas.}
+\cantus{Antienne}{ManeSurgensIacob}{Ant.}{4E}
+\ps{126}
+\cantus{Psaume-intonation}{126-4E}{Ps.}{4E}
+\psalmus[primus=2,numerus=2]{126-4E}
+\gloria[tonus=4E]
+
+\medskip
+8. \rubrica{Quo dicto, Sacerdos stans ponit ipsum primarium lapidem in fundamento, vel saltem illum tangit, dicens:}
+
+In fide Jesu Christi collocámus lápidem istum primárium in hoc fundaménto, in nómine Pa \crux{} tris, et Fí \crux{} lii, et Spíritus \crux{} Sancti: ut vígeat vera fides hic, et timor Dei, fratérnaque diléctio; et sit hic locus
+destinátus oratióni, et ad invocándum, et laudándum nomen ejúsdem Dómini nostri Jesu Christi, qui cum
+Patre et Spíritu Sancto vivit et regnat Deus, per ómnia sǽcula sæculórum. \textbf{\rb. Amen}
+
+\medskip
+
+9. \rubrica{Interim cæmentarius aptat ipsum lapidem cum cæmento:}
+\rubrica{postea Sacerdos spargit super lapidem aquam benedictam, dicens:}
+
+Asperges me, Dómine, hyssópo, et mundábor: lavábis me, et super nivem dealbábor.
+
+\rubrica{Deinde dicitur totus Psalmus \emph{Miserere}}
+\ps{50}
+\psalmus[primus=1,numerus=1]{50}
+%\gloria[tonus=0]
+\versus{Gloria Patri etc.}
+\rubrica{Quo dicto, Sacerdos spargit aquam benedictam per omnia fundamenta, si sunt aperta; si vero non sunt aperta, circuit aspergendo fundamenta ecclesiæ designata, hoc modo. Incipiens aspergere, inchoat, Clero prosequente, Antiphonam~:}
+\vulgo{Oh! que ce lieu est redoutable! C'est véritablement ici la maison de Dieu et la porte du ciel.}
+\cantus{Antienne}{OQuamMetuendus}{Ant.}{6}
+\ps{86}
+\cantus{Psaume-intonation}{86-6}{Ps.}{6}
+\psalmus[primus=2,numerus=2]{86-6}
+\gloria[tonus=6F]
+\cantus{Antienne}{OQuamMetuendus}{Ant.}{6}
+\medskip
+10. \rubrica{Interim aspergendo procedit usque ad fundamenta aperta, seu designata, et repetita Antiphona a Clero,
+Sacerdos stans dicit:}
+Orémus. {\rubrum \textit Ministri:} Flectámus génua. \rb. Leváte.
+\rubrica{Sacerdos :}
+Omnípotens et miséricors Deus, qui Sacerdótibus tuis tantam præ céteris grátiam contulísti, ut
+quidquid in tuo nómine digne, perfectéque ab eis ágitur, a te fíeri credátur: quaésumus imménsam
+cleméntiam tuam; ut, quidquid modo visitatúri sumus, vísites, et quidquid benedictúri sumus, bene
+\crux{} dícas: sitque ad nostræ humilitátis intróitum, Sanctórum tuórum méritis, fuga daémonum, Angeli
+pacis ingréssus. Per Christum Dóminum nostrum. \textbf{\rb. Amen}
+
+Deus, qui ex ómnium cohabitatióne Sanctórum ætérnum majestáti tuæ condis habitáculum: da
+ædificatióni tuæ increménta cæléstia; ut, quod te jubénte fundátur, te largiénte perficiátur. Per
+Christum Dóminum nostrum. \textbf{\rb. Amen}
+
+
+\end{document}
